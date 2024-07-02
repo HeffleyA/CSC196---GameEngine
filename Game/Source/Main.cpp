@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
 		for (int i = 0; points.size() > 1 && i < points.size() - 1; i++)
 		{
 			renderer.SetColor(255, 255, 255, 0);
-			renderer.DrawLine(points[i].x, points[i + 1].x, points[i].y, points[i + 1].y);
+			renderer.DrawLine(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
 		}
 
 		/*for (int i = 0; i < 25; i++)
