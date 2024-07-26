@@ -18,18 +18,11 @@ int main(int argc, char* argv[])
 	SpaceGame* game = new SpaceGame(&g_engine);
 	game->Initialize();
 
-	g_engine.GetAudio().AddSound("bass.wav");
-	g_engine.GetAudio().AddSound("snare.wav");
-	g_engine.GetAudio().AddSound("close-hat.wav");
-	g_engine.GetAudio().AddSound("open-hat.wav");
-	g_engine.GetAudio().AddSound("clap.wav");
-	g_engine.GetAudio().AddSound("cowbell.wav");
+	//Font* font = new Font();
+	//font->Load("Blox2.ttf", 40);
 
-	Font* font = new Font();
-	font->Load("Blox2.ttf", 20);
-
-	Text* text = new Text(font);
-	text->Create(g_engine.GetRenderer(), "Hello World", Color{ 1, 1, 1, 1 });
+	//Text* text = new Text(font);
+	//text->Create(g_engine.GetRenderer(), "Hello World", Color{ 1, 1, 1, 1 });
 
 	while (!g_engine.IsQuit())
 	{
@@ -39,41 +32,12 @@ int main(int argc, char* argv[])
 		g_engine.GetRenderer().SetColor(0, 0, 0, 0);
 		g_engine.GetRenderer().BeginFrame();
 		game->Draw(g_engine.GetRenderer());
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_Q) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_Q))
-		{
-			g_engine.GetAudio().PlaySound("bass.wav");
-		}
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_W) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_W))
-		{
-			g_engine.GetAudio().PlaySound("snare.wav");
-		}
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_E) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_E))
-		{
-			g_engine.GetAudio().PlaySound("close-hat.wav");
-		}
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_D) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_D))
-		{
-			g_engine.GetAudio().PlaySound("open-hat.wav");
-		}
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_S) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_S))
-		{
-			g_engine.GetAudio().PlaySound("clap.wav");
-		}
-
-		if (g_engine.GetInput().GetKeyDown(SDL_SCANCODE_A) && !g_engine.GetInput().GetPreviousKeyDown(SDL_SCANCODE_A))
-		{
-			g_engine.GetAudio().PlaySound("cowbell.wav");
-		}
-
-		text->Draw(g_engine.GetRenderer(), 40, 40);
+		g_engine.GetPS().Draw(g_engine.GetRenderer());
 
 		g_engine.GetRenderer().EndFrame();
 	}
+
+	g_engine.Shutdown();
 
 	return 0;
 }
